@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"strings"
 )
 
 var originUnit string
@@ -17,9 +18,20 @@ var errInvalidArguments = errors.New("Invalid arguments")
 var errReadingInput = errors.New("Error reading input")
 
 func main() {
+	/* Validate arguments
+	• Check if the length of args is different than 2.
+	If so, invoke the printError() function, passing
+	errInvalidArguments as the argument.
+	 */
 	if len(os.Args) != 2 {
 		printError(errInvalidArguments)
 	}
+	/* Read origin unit
+	• Invoke the strings.ToUpper() function passing os.Args[1] as the argument.
+	This ensures consistency when reading command line arguments provided by the user.
+	Assign the result to the previously defined originUnit variable.
+	 */
+	originUnit := strings.ToUpper(os.Args[1])
 
 	for {
 		fmt.Print("What is the current temperature in " + originUnit + " ? ")
