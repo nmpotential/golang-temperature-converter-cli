@@ -39,6 +39,7 @@ func main() {
 		• Invoke the fmt.Scanln() function, passing &originValue as the argument.
 		• Assign the two return values to the variables _ and err respectively.
 		 */
+		_, err := fmt.Scanln(&originValue)
 		/*
 		• Create an if statement checking if err != nil, and if that's true,
 		invoke the printError() function, passing errReadingInput as its argument.
@@ -66,7 +67,7 @@ func main() {
 		• On the following line, create an if statement checking if err != nil.
 		• If that condition is true, invoke printError() passing errReadingInput as its argument.
 		 */
-		_, err := fmt.Scanln(&shouldConvertAgain)
+		_, err = fmt.Scanln(&shouldConvertAgain)
 		if err != nil {
 			printError(errReadingInput)
 		}
