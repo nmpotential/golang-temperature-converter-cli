@@ -38,10 +38,17 @@ func main() {
 		/* Read current temperature
 		• Invoke the fmt.Scanln() function, passing &originValue as the argument.
 		Assign the two return values to the variables _ and err respectively.
-		On the following line, create an if statement checking if err != nil, and if that's true,
+		 */
+		_, err := fmt.Scanln(&originValue)
+		/*
+		• Create an if statement checking if err != nil, and if that's true,
 		invoke the printError() function, passing errReadingInput as its argument.
 		 */
-		fmt.Scanln(&originValue, "_", err)
+		if err != nil {
+			printError(errReadingInput)
+		}
+
+
 		fmt.Print("Would you like to convert another temperature ? (y/n) ")
 
 		if shouldConvertAgain != "Y" {
