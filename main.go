@@ -23,7 +23,7 @@ func main() {
 	• If so, invoke the printError() function, passing
 	errInvalidArguments as the argument.
 	 */
-	if len(os.Args) != 1 {
+	if len(os.Args) != 2 {
 		printError(errInvalidArguments)
 	}
 	/* Read origin unit
@@ -68,6 +68,9 @@ func main() {
 		• If that condition is true, invoke printError() passing errReadingInput as its argument.
 		 */
 		_, err = fmt.Scanln(&shouldConvertAgain)
+		if err != nil {
+			printError(errReadingInput)
+		}
 		/* Parse prompt answer
 		• Currently, we can't always be sure that the value assigned to shouldConvertAgain is
 		going to be in the casing we expect.
@@ -78,9 +81,10 @@ func main() {
 		as its argument.
 		•If the result of all of that is NOT equal to "Y", then the existing if block containing
 		fmt.Println("Good bye!") followed by break should be run.
-		 */
-		if err != nil {
-			printError(errReadingInput)
+		*/
+		if strings.ToUpper(strings.TrimSpace(shouldConvertAgain)) != "Y" {
+			fmt.Println("Good bye!")
+			break
 		}
 	}
 }
