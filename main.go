@@ -60,7 +60,7 @@ func main() {
 		} else {
 			convertToCelsius(originValue)
 		}
-		fmt.Print("Would you like to convert another temperature ? (y/n) ")
+		fmt.Print("Would you like to convert another temperature ? (y/n ")
 		/* Prompt to convert again
 		• Invoke the fmt.Scanln() function passing &shouldConvertAgain as its argument.
 		• Assign the two return values to the previously defined variables _ and err respectively.
