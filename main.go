@@ -20,7 +20,7 @@ var errReadingInput = errors.New("Error reading input")
 func main() {
 	/* Validate arguments
 	• Check if the length of args is different than 2.
-	If so, invoke the printError() function, passing
+	• If so, invoke the printError() function, passing
 	errInvalidArguments as the argument.
 	 */
 	if len(os.Args) != 2 {
@@ -29,7 +29,7 @@ func main() {
 	/* Read origin unit
 	• Invoke the strings.ToUpper() function passing os.Args[1] as the argument.
 	This ensures consistency when reading command line arguments provided by the user.
-	Assign the result to the previously defined originUnit variable.
+	• Assign the result to the previously defined originUnit variable.
 	 */
 	originUnit := strings.ToUpper(os.Args[1])
 
@@ -37,7 +37,7 @@ func main() {
 		fmt.Print("What is the current temperature in " + originUnit + " ? ")
 		/* Read current temperature
 		• Invoke the fmt.Scanln() function, passing &originValue as the argument.
-		Assign the two return values to the variables _ and err respectively.
+		• Assign the two return values to the variables _ and err respectively.
 		 */
 		_, err := fmt.Scanln(&originValue)
 		/*
@@ -49,9 +49,11 @@ func main() {
 		}
 		/* Convert the temperature
 		• Create an if statement to check if originUnit is equal to "C"
-		(notice the capital casing). If so, invoke the convertToFahrenheit()
-		function passing originValue as the argument. Otherwise, create an else
-		block and invoke the convertToCelsius() function, passing originValue as the argument.
+		(notice the capital casing).
+		• If so, invoke the convertToFahrenheit()
+		function passing originValue as the argument.
+		• Otherwise, create an else block and invoke the convertToCelsius() function,
+		passing originValue as the argument.
 		 */
 		if originUnit == "C" {
 			convertToFahrenheit(originValue)
@@ -59,6 +61,16 @@ func main() {
 			convertToCelsius(originValue)
 		}
 		fmt.Print("Would you like to convert another temperature ? (y/n) ")
+		/* Prompt to convert again
+		• Invoke the fmt.Scanln() function passing &shouldConvertAgain as its argument.
+		• Assign the two return values to the previously defined variables _ and err respectively.
+		• On the following line, create an if statement checking if err != nil.
+		• If that condition is true, invoke printError() passing errReadingInput as its argument.
+		 */
+		_, err := fmt.Scanln(&shouldConvertAgain)
+		if err != nil {
+			printError(errReadingInput)
+		}
 
 		if shouldConvertAgain != "Y" {
 			fmt.Println("Good bye!")
