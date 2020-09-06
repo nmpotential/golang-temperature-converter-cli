@@ -47,8 +47,17 @@ func main() {
 		if err != nil {
 			printError(errReadingInput)
 		}
-
-
+		/* Convert the temperature
+		• Create an if statement to check if originUnit is equal to "C"
+		(notice the capital casing). If so, invoke the convertToFahrenheit()
+		function passing originValue as the argument. Otherwise, create an else
+		block and invoke the convertToCelsius() function, passing originValue as the argument.
+		 */
+		if originUnit == "C" {
+			convertToFahrenheit(originValue)
+		} else {
+			convertToCelsius(originValue)
+		}
 		fmt.Print("Would you like to convert another temperature ? (y/n) ")
 
 		if shouldConvertAgain != "Y" {
