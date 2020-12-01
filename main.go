@@ -7,22 +7,22 @@ import (
 	"strings"
 )
 
-var originUnit string
-var originValue float64
+var originUnit string   //input
+var originValue float64 //output
 
-var shouldConvertAgain string
+var shouldConvertAgain string //output
 
-var err error
+var err error //error output
 
-var errInvalidArguments = errors.New("Invalid arguments")
-var errReadingInput = errors.New("Error reading input")
+var errInvalidArguments = errors.New("Invalid arguments") //error output for invalid arguments
+var errReadingInput = errors.New("Error reading input")   //error output for issue with reading input
 
 func main() {
 	/* Validate arguments
 	• Check if the length of args is different than 2.
 	• If so, invoke the printError() function, passing
 	errInvalidArguments as the argument.
-	 */
+	*/
 	if len(os.Args) != 2 {
 		printError(errInvalidArguments)
 	}
@@ -30,7 +30,7 @@ func main() {
 	• Invoke the strings.ToUpper() function passing os.Args[1] as the argument.
 	This ensures consistency when reading command line arguments provided by the user.
 	• Assign the result to the previously defined originUnit variable.
-	 */
+	*/
 	originUnit := strings.ToUpper(os.Args[1])
 
 	for {
@@ -38,12 +38,12 @@ func main() {
 		/* Read current temperature
 		• Invoke the fmt.Scanln() function, passing &originValue as the argument.
 		• Assign the two return values to the variables _ and err respectively.
-		 */
+		*/
 		_, err := fmt.Scanln(&originValue)
 		/*
-		• Create an if statement checking if err != nil, and if that's true,
-		invoke the printError() function, passing errReadingInput as its argument.
-		 */
+			• Create an if statement checking if err != nil, and if that's true,
+			invoke the printError() function, passing errReadingInput as its argument.
+		*/
 		if err != nil {
 			printError(errReadingInput)
 		}
@@ -54,7 +54,7 @@ func main() {
 		function passing originValue as the argument.
 		• Otherwise, create an else block and invoke the convertToCelsius() function,
 		passing originValue as the argument.
-		 */
+		*/
 		if originUnit == "C" {
 			convertToFahrenheit(originValue)
 		} else {
@@ -66,7 +66,7 @@ func main() {
 		• Assign the two return values to the previously defined variables _ and err respectively.
 		• On the following line, create an if statement checking if err != nil.
 		• If that condition is true, invoke printError() passing errReadingInput as its argument.
-		 */
+		*/
 		_, err = fmt.Scanln(&shouldConvertAgain)
 		if err != nil {
 			printError(errReadingInput)
