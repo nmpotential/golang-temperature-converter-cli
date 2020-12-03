@@ -7,8 +7,8 @@ import (
 	"strings"
 )
 
-var originUnit string   //input
-var originValue float64 //output
+var originUnit string   // Expected Input
+var originValue float64 // Expected Input
 
 var shouldConvertAgain string //output
 
